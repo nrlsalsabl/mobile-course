@@ -1,78 +1,41 @@
 import 'package:flutter/material.dart';
 
 class StudentInfoCard extends StatelessWidget {
-  const StudentInfoCard({super.key});
+  final String nim;
+  final String name;
+  final String major;
+  final int semester;
+  final String email;
+  final int attendance;
+
+  const StudentInfoCard({
+    super.key,
+    required this.nim,
+    required this.name,
+    required this.major,
+    required this.semester,
+    required this.email,
+    required this.attendance,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-
-      padding: const EdgeInsets.all(20),
-
-      decoration: BoxDecoration(
-        color: Colors.white,
-
-        borderRadius: BorderRadius.circular(16),
-
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.08),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-
-      child: Row(
-        children: [
-          // ====================================================
-          // PROFILE ICON
-          // ====================================================
-          Container(
-            width: 60,
-            height: 60,
-
-            decoration: BoxDecoration(
-              color: Colors.indigo.shade50,
-              shape: BoxShape.circle,
-            ),
-
-            child: Icon(Icons.person, size: 32, color: Colors.indigo.shade700),
-          ),
-
-          const SizedBox(width: 16),
-
-          // ====================================================
-          // DATA MAHASISWA
-          // ====================================================
-          const Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-
-              children: [
-                Text(
-                  'Nurul Salsabila',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-
-                SizedBox(height: 4),
-
-                Text(
-                  '20260001',
-                  style: TextStyle(fontSize: 14, color: Colors.black54),
-                ),
-
-                SizedBox(height: 2),
-
-                Text(
-                  'Teknik Informatika',
-                  style: TextStyle(fontSize: 14, color: Colors.black54),
-                ),
-              ],
-            ),
-          ),
-        ],
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(name, style: Theme.of(context).textTheme.titleMedium),
+            const SizedBox(height: 8),
+            Text('NIM: $nim'),
+            Text('Program Studi: $major'),
+            Text('Semester: $semester'),
+            Text('Email: $email'),
+            Text('Kehadiran: $attendance%'),
+          ],
+        ),
       ),
     );
   }
